@@ -88,7 +88,7 @@ public class HCQBrokerImpl implements HCQBroker, MembershipListener
         {
             Config config;
             // setup config
-            String hazelcastConfigFile = Util.coalesceEmpty(System.getProperty("hazelcast.config"), System.getenv("hazelcast_config"));
+            String hazelcastConfigFile = Util.coalesceEmpty(System.getProperty("hcq.hazelcast.config"), System.getenv("hcq_hazelcast_config"));
             if (hazelcastConfigFile != null)
             {
                 config = new XmlConfigBuilder(hazelcastConfigFile).build();
