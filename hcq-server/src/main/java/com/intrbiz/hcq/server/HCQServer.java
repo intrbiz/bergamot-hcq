@@ -6,6 +6,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import com.intrbiz.Util;
 import com.intrbiz.hcq.HCQBroker;
 import com.intrbiz.hcq.server.dispatch.QueueDispatcher;
 import com.intrbiz.hcq.server.handler.ProtocolProcessor;
@@ -117,13 +118,16 @@ public class HCQServer implements Runnable
     
     public static void main(String[] args) throws Exception
     {
+        // configuration
+        int port = Integer.parseInt(Util.coalesceEmpty(System.getProperty("hcq.port"), System.getenv("hcq_port"), "6643"));
+        // setup logging
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.TRACE);
         // start the broker
         System.out.println("Local: " + HCQBroker.get().localNodeInfo());
         System.out.println("Broker: " + HCQBroker.get().info());
         // setup the server
-        HCQServer server = new HCQServer(Integer.parseInt(args[0]));
+        HCQServer server = new HCQServer(port);
         // go go go
         server.start();
     }
