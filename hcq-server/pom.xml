@@ -37,14 +37,14 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>bergamot-ui</finalName>
+		<finalName>bergamot-hcq-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.intrbiz.util</groupId>
 				<artifactId>packaging</artifactId>
 				<version>${intrbiz.util.version}</version>
 				<configuration>
-					<appClass>com.intrbiz.bergamot.ui.BergamotApp</appClass>
+					<appClass>com.intrbiz.hcq.server.HCQServer</appClass>
 				</configuration>
 				<executions>
 					<execution>
